@@ -10,7 +10,7 @@ export const GET: APIRoute = async ({ params, request }) => {
       ...data,
       image: {
         full: `${assetHost}/images/full/${data.image}`,
-        thumb: `${assetHost}/images/thumb/800/${data.image}`,
+        thumb: `${assetHost}/images/thumb/${data.image}`,
       },
     },
   }))
