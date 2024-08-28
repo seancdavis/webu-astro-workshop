@@ -8,7 +8,10 @@ export const GET: APIRoute = async ({ params, request }) => {
     id: slug,
     data: {
       ...data,
-      image: `${assetHost}/images/full/${data.image}`,
+      image: {
+        full: `${assetHost}/images/full/${data.image}`,
+        thumb: `${assetHost}/images/thumb/800/${data.image}`,
+      },
     },
   }))
   return new Response(JSON.stringify(products))

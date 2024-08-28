@@ -4,6 +4,6 @@ from = "/images/full/:path"
 to = "/.netlify/images?url=/images/:path"
 status = 200
 [[redirects]]
-from = "/images/:width/:path"
-to = "/.netlify/images?w=:width&url=/images/:path"
+from = "/images/thumb/:size/:path"
+to = "/.netlify/images?w=:size&h=:size&fit=cover&url=/images/:path"
 status = 200
