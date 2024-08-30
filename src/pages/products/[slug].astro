@@ -10,12 +10,7 @@ export async function getStaticPaths() {
   }))
 }
 
-// const { slug } = Astro.params
-// const product = await getEntry('product', slug) as CollectionEntry<'product'>
-
-const product = Astro.props.product
-
-// const { Content } = await product.render();
+const { product } = Astro.props
 ---
 
 <Layout title="My Merch Store">
