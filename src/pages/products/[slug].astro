@@ -10,7 +10,11 @@ export async function getStaticPaths() {
   }))
 }
 
-const { product } = Astro.props
+// const { slug } = Astro.params
+// const product = await getEntry('product', slug) as CollectionEntry<'product'>
+
+const product = Astro.props.product
+
 // const { Content } = await product.render();
 ---
 
