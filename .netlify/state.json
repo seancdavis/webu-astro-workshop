@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Cincinnati",
+			"country": {
+				"code": "US",
+				"name": "United States"
+			},
+			"subdivision": {
+				"code": "OH",
+				"name": "Ohio"
+			},
+			"timezone": "America/New_York",
+			"latitude": 39.1246,
+			"longitude": -84.4867
+		},
+		"timestamp": 1724840393937
+	}
+}
