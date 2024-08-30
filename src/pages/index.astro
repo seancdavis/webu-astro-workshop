@@ -1,6 +1,6 @@
 ---
+import ProductCard from '@/components/ProductCard.astro'
 import Layout from '@/layouts/Layout.astro'
-import { productPath } from '@/utils/routes'
 import { getCollection } from 'astro:content'
 
 const products = await getCollection('product')
@@ -9,15 +9,6 @@ const products = await getCollection('product')
 <Layout title="My Merch Store">
   <h1>Products</h1>
   <ul>
-    {
-      products.map((product) => (
-        <div>
-          <a href={productPath(product)}>
-            <h2>{product.data.title}</h2>
-          </a>
-          <p>{product.data.description}</p>
-        </div>
-      ))
-    }
+    {products.map((product) => <ProductCard product={product} />)}
   </ul>
 </Layout>
