@@ -1,5 +1,6 @@
 ---
 import BuyProductButton from '@/components/BuyProductButton.astro'
+import ProductReviews from '@/components/ProductReviews.astro'
 import Layout from '@/layouts/Layout.astro'
 import { productImagePath } from '@/utils/assets'
 import { productNewReviewPath } from '@/utils/routes'
@@ -42,5 +43,7 @@ const { product } = Astro.props
       </div>
       <button type="submit">Submit</button>
     </form>
+
+    <ProductReviews product={product} />
   </div>
 </Layout>
