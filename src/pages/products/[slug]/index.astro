@@ -1,4 +1,5 @@
 ---
+import BuyProductButton from '@/components/BuyProductButton.astro'
 import Layout from '@/layouts/Layout.astro'
 import { productImagePath } from '@/utils/assets'
 import { getCollection } from 'astro:content'
@@ -19,5 +20,6 @@ const { product } = Astro.props
   <div class="w-64">
     <img src={productImagePath(product)} alt={product.data.title} />
   </div>
+  <BuyProductButton product={product} />
   <pre>{JSON.stringify(product, null, 2)}</pre>
 </Layout>

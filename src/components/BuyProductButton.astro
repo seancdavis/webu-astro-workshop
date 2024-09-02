@@ -1,0 +1,17 @@
+---
+import { productBuyNowPath } from '@/utils/routes'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  product: CollectionEntry<'product'>
+}
+
+const { product } = Astro.props
+---
+
+<a
+  href={productBuyNowPath(product)}
+  class="bg-blue-400 text-white font-semibold rounded-md py-2 px-6"
+>
+  Buy Now
+</a>
