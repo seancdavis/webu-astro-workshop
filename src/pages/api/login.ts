@@ -6,7 +6,6 @@ export const prerender = false;
 export const POST: APIRoute = async ({ redirect, url, request }) => {
   const REQUEST_ORIGIN = url.origin;
 
-  // Get form data
   const formData = await request.formData();
   const email = formData.get("email") as string;
 

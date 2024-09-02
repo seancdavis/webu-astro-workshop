@@ -4,10 +4,6 @@ import type { APIRoute } from "astro";
 export const prerender = false;
 
 export const POST: APIRoute = async ({ redirect, url, request }) => {
-  console.log(url.href);
-  // const REQUEST_ORIGIN = url.origin;
-
-  // Get form data
   const formData = await request.formData();
   const email = formData.get("email") as string;
   const token = formData.get("token") as string;
