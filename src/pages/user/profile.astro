@@ -4,16 +4,22 @@ import { supabase } from '@/utils/database'
 
 export const prerender = false
 
-const user = await supabase.auth.getUser()
-console.log(user)
+const {
+  data: { user },
+} = await supabase.auth.getUser()
+
+if (!user) {
+  return Astro.redirect('/login')
+}
 ---
 
 <Layout title="Profile">
   <div class="container">
     <h1>Profile</h1>
-    <!-- <p>Welcome back, {user.email}!</p>
+    <p>Welcome back, {user.email}!</p>
+
     <form action="/api/logout" method="post">
       <button type="submit">Logout</button>
-    </form> -->
-  </div></Layout
->
+    </form>
+  </div>
+</Layout>
