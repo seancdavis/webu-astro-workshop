@@ -8,7 +8,7 @@ export const prerender = false;
 export const POST: APIRoute = async ({ params, redirect, url, request }) => {
   // const REQUEST_ORIGIN = url.origin
   // const stripe = new Stripe(import.meta.env.STRIPE_API_KEY)
-  const product = await getEntry("product", params.slug);
+  const product = await getEntry("product", params.slug as string);
 
   if (!product) {
     return new Response("Product not found", { status: 404 });
