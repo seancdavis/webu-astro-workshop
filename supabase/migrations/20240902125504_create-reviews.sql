@@ -5,5 +5,5 @@ CREATE TABLE reviews (
     rating BETWEEN 1 AND 5
   ) NOT NULL,
   comment TEXT,
-  created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+  created_at TIMESTAMPTZ DEFAULT NOW()
 );
