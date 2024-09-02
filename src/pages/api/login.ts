@@ -18,5 +18,5 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
     },
   });
 
-  return redirect("/login/verify-otp");
+  return redirect(`/login/verify-otp?email=${email}`);
 };

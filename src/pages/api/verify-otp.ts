@@ -9,15 +9,19 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
 
   // Get form data
   const formData = await request.formData();
+  const email = formData.get("email") as string;
   const token = formData.get("token") as string;
 
   const { data: { session }, error } = await supabase.auth.verifyOtp({
-    email: "scdavis41@gmail.com",
+    email,
     token,
     type: "email",
   });
 
-  console.log({ session, error });
+  if (error || !session) {
+    console.error(error);
+    throw new Error("Invalid OTP");
+  }
 
-  return new Response("OK", { status: 200 });
+  return redirect("/");
 };
