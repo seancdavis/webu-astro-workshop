@@ -7,3 +7,7 @@ export function productPath(product: CollectionEntry<'product'>) {
 export function productBuyNowPath(product: CollectionEntry<'product'>) {
   return `/products/${product.slug}/buy`
 }
+
+export function productNewReviewPath(product: CollectionEntry<'product'>) {
+  return `/products/${product.slug}/review`
+}

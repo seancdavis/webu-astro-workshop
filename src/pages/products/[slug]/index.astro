@@ -2,6 +2,7 @@
 import BuyProductButton from '@/components/BuyProductButton.astro'
 import Layout from '@/layouts/Layout.astro'
 import { productImagePath } from '@/utils/assets'
+import { productNewReviewPath } from '@/utils/routes'
 import { getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
@@ -22,4 +23,24 @@ const { product } = Astro.props
   </div>
   <BuyProductButton product={product} />
   <pre>{JSON.stringify(product, null, 2)}</pre>
+
+  <div>
+    <form action={productNewReviewPath(product)} method="post">
+      <div>
+        <label for="rating" class="block">Rating</label>
+        <select id="rating" name="rating" class="border">
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+      <div>
+        <label for="comment" class="block">Review Comments</label>
+        <textarea id="comment" name="comment" class="border"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </Layout>
