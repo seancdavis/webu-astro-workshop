@@ -1,0 +1,14 @@
+---
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout title="Login">
+  <div class="container">
+    <h1>Verify OTP</h1>
+    <form action="/api/verify-otp" method="post">
+      <label for="email">One-time password</label>
+      <input type="text" id="token" name="token" required />
+      <button type="submit">Verify</button>
+    </form>
+  </div>
+</Layout>

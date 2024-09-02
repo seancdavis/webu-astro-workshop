@@ -1,0 +1,6 @@
+input {
+  @apply border
+    m-2
+    p-2
+    rounded-sm;
+}
