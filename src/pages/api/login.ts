@@ -11,10 +11,7 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
 
   const { data, error } = await supabase.auth.signInWithOtp({
     email,
-    options: {
-      shouldCreateUser: true,
-      emailRedirectTo: `${REQUEST_ORIGIN}/api/otp-login`,
-    },
+    options: { shouldCreateUser: false },
   });
 
   return redirect(`/login/verify-otp?email=${email}`);
