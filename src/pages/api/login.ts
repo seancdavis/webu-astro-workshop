@@ -22,6 +22,9 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
     options: { shouldCreateUser: true, emailRedirectTo: REQUEST_ORIGIN },
   });
 
+  console.log({ data, error });
+  // TODO: Handle `over_email_send_rate_limit` error
+
   return redirect(
     existingUserProfile
       ? `/login/verify-otp?email=${email}`
