@@ -9,10 +9,22 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
   const formData = await request.formData();
   const email = formData.get("email") as string;
 
+  const { data: existingUserProfile } = await supabase.from("profiles").select(
+    "*",
+  )
+    .eq(
+      "email",
+      email,
+    ).single();
+
   const { data, error } = await supabase.auth.signInWithOtp({
     email,
-    options: { shouldCreateUser: false },
+    options: { shouldCreateUser: true, emailRedirectTo: REQUEST_ORIGIN },
   });
 
-  return redirect(`/login/verify-otp?email=${email}`);
+  return redirect(
+    existingUserProfile
+      ? `/login/verify-otp?email=${email}`
+      : `/login/confirm-email`,
+  );
 };
