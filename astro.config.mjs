@@ -7,4 +7,7 @@ export default defineConfig({
   output: 'hybrid',
   adapter: netlify(),
   integrations: [tailwind()],
+  experimental: {
+    serverIslands: true,
+  },
 })
