@@ -5,7 +5,6 @@ create table public.profiles (
   last_name text,
   primary key (id)
 );
-alter table public.profiles enable row level security;
 -- inserts a row into public.profiles
 create function public.handle_new_user() returns trigger language plpgsql security definer
 set search_path = '' as $$ begin
