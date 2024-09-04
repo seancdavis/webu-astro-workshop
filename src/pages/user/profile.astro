@@ -1,25 +1,53 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { supabase } from '@/utils/database'
+import { getCurrentUserProfile, getUserDisplayName } from '@/utils/auth'
 
 export const prerender = false
 
-const {
-  data: { user },
-} = await supabase.auth.getUser()
-
-if (!user) {
-  return Astro.redirect('/login')
-}
+const currentUserProfile = await getCurrentUserProfile()
+if (!currentUserProfile) return Astro.redirect('/login')
 ---
 
 <Layout title="Profile">
   <div class="container">
     <h1>Profile</h1>
-    <p>Welcome back, {user.email}!</p>
+    <p>Welcome back, {getUserDisplayName(currentUserProfile)}!</p>
 
-    <form action="/api/logout" method="post">
-      <button type="submit">Logout</button>
-    </form>
+    <section>
+      <h2>Update profile details</h2>
+      <form action="/api/profile/update" method="post">
+        <div>
+          <label for="first_name">First name</label>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            value={currentUserProfile.first_name}
+          />
+        </div>
+        <div>
+          <label for="last_name">Last name</label>
+          <input type="text" id="last_name" name="last_name" value={currentUserProfile.last_name} />
+        </div>
+        <button type="submit">Update</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Update avatar</h2>
+      <form action="/api/profile/upload-avatar" method="post" enctype="multipart/form-data">
+        <input type="file" name="avatar_file" accept="image/*" style="margin-top: 1rem;" />
+        <div>
+          <input type="submit" value="Upload avatar" />
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Actions</h2>
+      <form action="/api/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
+    </section>
   </div>
 </Layout>

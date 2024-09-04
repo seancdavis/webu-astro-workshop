@@ -13,18 +13,21 @@ export type Database = {
         Row: {
           email: string
           first_name: string | null
+          has_avatar: boolean | null
           id: string
           last_name: string | null
         }
         Insert: {
           email: string
           first_name?: string | null
+          has_avatar?: boolean | null
           id: string
           last_name?: string | null
         }
         Update: {
           email?: string
           first_name?: string | null
+          has_avatar?: boolean | null
           id?: string
           last_name?: string | null
         }

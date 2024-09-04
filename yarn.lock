@@ -777,6 +777,11 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
+"@netlify/blobs@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@netlify/blobs/-/blobs-8.0.1.tgz#ba8b7279cbc511ffcc452fb482e0c66644c65c3a"
+  integrity sha512-IrZHVqillU0x12eDbsap4Ba6poi+4IdVCYjZa+tA0eD95TaSbSqfw1zNkO27MiKw0pOjPB6+RXFK4pdfOs/qUQ==
+
 "@netlify/functions@^2.8.0":
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-2.8.1.tgz#67cd94f929551e156225fb50d2efba603b97e138"
