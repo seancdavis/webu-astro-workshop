@@ -1,4 +1,5 @@
-import { getCurrentUserProfile, supabase } from "@/utils/database";
+import { getCurrentUserProfile } from "@/utils/auth";
+import { supabase } from "@/utils/database";
 import { productPath } from "@/utils/routes";
 import type { APIRoute } from "astro";
 import { getEntry } from "astro:content";

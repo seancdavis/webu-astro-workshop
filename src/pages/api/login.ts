@@ -1,4 +1,5 @@
-import { getProfileByEmail, supabase } from "@/utils/database";
+import { getProfileByEmail } from "@/utils/auth";
+import { supabase } from "@/utils/database";
 import type { APIRoute } from "astro";
 
 export const prerender = false;
