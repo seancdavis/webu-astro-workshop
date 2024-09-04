@@ -11,6 +11,18 @@ const { product } = Astro.props
 const {
   data: { user: currentUser },
 } = await supabase.auth.getUser()
+
+let hasReviewed = false
+
+if (currentUser) {
+  const { data: reviews } = await supabase
+    .from('reviews')
+    .select('*')
+    .eq('product_id', product.id)
+    .eq('user_id', currentUser.id)
+
+  hasReviewed = (reviews?.length || 0) > 0
+}
 ---
 
 {
@@ -22,7 +34,7 @@ const {
 }
 
 {
-  currentUser && (
+  currentUser && !hasReviewed && (
     <form action={productNewReviewPath(product)} method="post">
       <div>
         <label for="rating" class="block">
