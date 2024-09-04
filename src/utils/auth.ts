@@ -23,8 +23,8 @@ export async function getCurrentUserProfile() {
   return await getProfileByEmail(currentUser.email!);
 }
 
-export async function getUserDisplayName(profile: Tables<"profiles">) {
+export function getUserDisplayName(profile: Tables<"profiles">): string {
   if (!profile.first_name && !profile.last_name) return profile.email;
-  if (!profile.last_name) return profile.first_name;
+  if (profile.first_name && !profile.last_name) return profile.first_name;
   return `${profile.first_name} ${profile.last_name}`;
 }
