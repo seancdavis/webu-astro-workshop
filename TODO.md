@@ -1,0 +1,13 @@
+- [ ] All the routes should be driven from the routes file
+- [ ] Combine the idea of profile and user to be consistent
+- [ ] Clean up styles
+- [ ] Structure the API pages to be more readable/usable as we unveil more features
+- [ ] Structure the view pages to be more readable/usable as we unveil more features
+- [ ] Structure the components to be more readable/usable as we unveil more features
+- [ ] Add comments to all utilities and helper functions
+- [ ] Add feedback for when db changes or other actions happen (rather than errors)
+- [ ] Custom 500 and 404 pages
+- [ ] Improve the auth process for happy paths (new user, existing user, bad otp code)
+- [ ] Add a favicon
+- [ ] Add a logo
+- [ ] Add comments to the sql migrations
