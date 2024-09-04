@@ -1,17 +1,24 @@
 ---
-import { supabase } from '@/utils/database'
+import { getCurrentUserProfile, getUserDisplayName } from '@/utils/auth'
 
-const {
-  data: { user: currentUser },
-} = await supabase.auth.getUser()
+const currentUserProfile = await getCurrentUserProfile()
 ---
 
-{!currentUser && <a href="/login">Sign in</a>}
+{!currentUserProfile && <a href="/login">Sign in</a>}
 
 {
-  currentUser && (
+  currentUserProfile && (
     <div class="flex items-center gap-2">
-      <a href="/user/profile">{currentUser.email}</a>
+      <div class="flex items-center gap-2">
+        {currentUserProfile.has_avatar && (
+          <img
+            src="/api/profile/avatar"
+            class="w-8 h-8 object-cover rounded-full border-2 border-white"
+          />
+        )}
+        <a href="/user/profile">{getUserDisplayName(currentUserProfile)}</a>
+      </div>
+
       <form action="/api/logout" method="post">
         <button type="submit">Logout</button>
       </form>
