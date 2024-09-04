@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/database";
+import { getCurrentUserProfile, supabase } from "@/utils/database";
 import { productPath } from "@/utils/routes";
 import type { APIRoute } from "astro";
 import { getEntry } from "astro:content";
@@ -10,6 +10,13 @@ export const POST: APIRoute = async ({ params, redirect, url, request }) => {
 
   if (!product) {
     return new Response("Product not found", { status: 404 });
+  }
+
+  // Get the user and return 401 if not logged in and with a profile record in
+  // the public schema.
+  const currentUserProfile = await getCurrentUserProfile();
+  if (!currentUserProfile) {
+    return new Response("Unauthorized", { status: 401 });
   }
 
   // Get form data
@@ -24,6 +31,7 @@ export const POST: APIRoute = async ({ params, redirect, url, request }) => {
   // Save review to Supabase
   const { error } = await supabase.from("reviews").insert({
     product_id: product.id,
+    user_id: currentUserProfile.id,
     rating: parseInt(rating, 10),
     comment,
   });

@@ -19,7 +19,7 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
     },
   });
 
-  console.log({ data, error });
+  // console.log({ data, error });
   // TODO: Handle `over_email_send_rate_limit` error
 
   return redirect(
