@@ -1,3 +1,4 @@
+import type { Tables } from "@/types/database.types";
 import { supabase } from "@/utils/database";
 
 export async function getCurrentUser() {
@@ -20,4 +21,10 @@ export async function getCurrentUserProfile() {
   const currentUser = await getCurrentUser();
   if (!currentUser) return null;
   return await getProfileByEmail(currentUser.email!);
+}
+
+export async function getUserDisplayName(profile: Tables<"profiles">) {
+  if (!profile.first_name && !profile.last_name) return profile.email;
+  if (!profile.last_name) return profile.first_name;
+  return `${profile.first_name} ${profile.last_name}`;
 }
