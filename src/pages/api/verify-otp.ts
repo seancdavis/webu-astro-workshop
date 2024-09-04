@@ -8,6 +8,8 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
   const email = formData.get("email") as string;
   const token = formData.get("token") as string;
 
+  console.log({ email, token });
+
   const { data: { session }, error } = await supabase.auth.verifyOtp({
     email,
     token,

@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 
 export const prerender = false
 
-const email = Astro.url.searchParams.get('email')
+const email = Astro.url.searchParams.get('email')?.replace(/\ +/g, '+')
 if (!email) {
   throw new Error('Email is required')
 }

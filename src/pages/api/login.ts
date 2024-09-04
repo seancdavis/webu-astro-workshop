@@ -1,4 +1,4 @@
-import { supabase } from "@/utils/database";
+import { getProfileByEmail, supabase } from "@/utils/database";
 import type { APIRoute } from "astro";
 
 export const prerender = false;
@@ -9,17 +9,14 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
   const formData = await request.formData();
   const email = formData.get("email") as string;
 
-  const { data: existingUserProfile } = await supabase.from("profiles").select(
-    "*",
-  )
-    .eq(
-      "email",
-      email,
-    ).single();
+  const existingUserProfile = await getProfileByEmail(email);
 
   const { data, error } = await supabase.auth.signInWithOtp({
     email,
-    options: { shouldCreateUser: true, emailRedirectTo: REQUEST_ORIGIN },
+    options: {
+      shouldCreateUser: true,
+      emailRedirectTo: `${REQUEST_ORIGIN}/login`,
+    },
   });
 
   console.log({ data, error });
