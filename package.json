@@ -9,8 +9,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "create-test-user": "npx tsx ./src/scripts/create-test-user.ts",
-    "delete-test-user": "npx tsx ./src/scripts/delete-test-user.ts"
+    "create-test-user": "npx tsx ./src/scripts/create-test-user.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
