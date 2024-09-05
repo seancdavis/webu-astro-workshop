@@ -1,3 +1,6 @@
+- [ ] Fix the issue with durable cache on /reviews
+- [ ] Fix the issue with caching server islands for auth
+- [ ] Build an extension for the search index
 - [ ] All the routes should be driven from the routes file
 - [ ] Combine the idea of profile and user to be consistent
 - [ ] Clean up styles
