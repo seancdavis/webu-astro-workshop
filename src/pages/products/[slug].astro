@@ -27,6 +27,6 @@ const { product } = Astro.props
 
   <div>
     <NewProductReview product={product} server:defer />
-    <ProductReviews product={product} />
+    <ProductReviews product={product} server:defer />
   </div>
 </Layout>
