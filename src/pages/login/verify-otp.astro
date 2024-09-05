@@ -15,7 +15,7 @@ if (!email) {
     <form action="/api/verify-otp" method="post">
       <input type="hidden" name="email" value={email} />
       <label for="token">One-time password</label>
-      <input type="text" id="token" name="token" required />
+      <input type="text" id="token" name="token" required autofocus />
       <button type="submit">Verify</button>
     </form>
   </div>
