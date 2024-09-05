@@ -30,7 +30,7 @@ const avgRating = reviews.reduce((acc, review) => acc + review.rating, 0) / revi
       <div>
         <p>{review.created_at}</p>
         <p>{review.rating}</p>
-        {review.comment?.length > 0 && <p>{review.comment}</p>}
+        {(review.comment?.length || 0) > 0 && <p>{review.comment}</p>}
       </div>
     ))
   }
