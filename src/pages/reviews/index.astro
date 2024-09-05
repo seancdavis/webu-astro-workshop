@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { supabase } from '@/utils/database'
+
+export const prerender = false
+
+const { data, error } = await supabase
+  .from('reviews')
+  .select()
+  .order('created_at', { ascending: false })
+
+if (error) {
+  console.error(error)
+}
+
+const reviews = data || []
+
+// The browser should always check freshness
+Astro.response.headers.set('cache-control', 'public, max-age=0, must-revalidate')
+
+// The CDN should cache for a year, but revalidate if the cache tag changes
+Astro.response.headers.set('netlify-cdn-cache-control', 's-maxage=31536000')
+
+// Tag the page with the book ID
+Astro.response.headers.set('netlify-cache-tag', 'all-reviews')
+---
+
+<Layout title="All Reviews">
+  <h2>All Reviews</h2>
+
+  {reviews.length === 0 && <p>No reviews yet</p>}
+
+  {
+    reviews.map((review) => (
+      <div>
+        <p>{review.created_at}</p>
+        <p>{review.rating}</p>
+        {(review.comment?.length || 0) > 0 && <p>{review.comment}</p>}
+      </div>
+    ))
+  }
+</Layout>
