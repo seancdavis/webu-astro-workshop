@@ -12,3 +12,5 @@
 - [ ] Add a logo
 - [ ] Add comments to the sql migrations
 - [ ] Script for caching the search index locally
+- [ ] Put actual content in place
+- [ ] Clean up search page

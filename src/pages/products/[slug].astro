@@ -17,8 +17,8 @@ export async function getStaticPaths() {
 const { product } = Astro.props
 ---
 
-<Layout title="My Merch Store" indexable={true}>
-  <h1>{product.data.title}</h1>
+<Layout title={`${product.data.title} | My Merch Store`} indexable={true}>
+  <h1 data-pagefind-meta="title">{product.data.title}</h1>
   <div class="w-64">
     <img src={productImagePath(product)} alt={product.data.title} />
   </div>
