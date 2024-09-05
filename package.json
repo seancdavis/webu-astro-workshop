@@ -9,7 +9,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "create-test-user": "npx tsx ./src/scripts/create-test-user.ts"
+    "create-test-user": "npx tsx ./src/scripts/create-test-user.ts",
+    "index:dev": "yarn build && npx pagefind --site dist && rm -rf public/pagefind && cp -R dist/pagefind public/"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",

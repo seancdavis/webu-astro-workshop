@@ -80,7 +80,6 @@ export default function SearchApp() {
 }
 
 const SearchResultItem = ({ result }: { result: SearchResultData }) => {
-  console.log(result)
   return (
     <article>
       <h2>
