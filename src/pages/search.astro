@@ -1,0 +1,16 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import SearchApp from '@/components/SearchApp.tsx'
+---
+
+<Layout title="Search">
+  <h1>Search</h1>
+  <SearchApp client:load />
+</Layout>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', async () => {
+    window.pagefind = await import('/pagefind/pagefind.js')
+    window.pagefind.init()
+  })
+</script>
