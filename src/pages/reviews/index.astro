@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/Layout.astro'
+import Footer from '@/layouts/Footer.astro'
 import { supabase } from '@/utils/database'
 
 export const prerender = false
@@ -25,18 +25,29 @@ Astro.response.headers.set('netlify-cdn-cache-control', 's-maxage=31536000')
 Astro.response.headers.set('netlify-cache-tag', 'all-reviews')
 ---
 
-<Layout title="All Reviews">
-  <h2>All Reviews</h2>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Reviews</title>
+  </head>
+  <body class="min-h-screen justify-between flex flex-col">
+    <div>
+      <h1>All Reviews</h1>
 
-  {reviews.length === 0 && <p>No reviews yet</p>}
+      {reviews.length === 0 && <p>No reviews yet</p>}
 
-  {
-    reviews.map((review) => (
-      <div>
-        <p>{review.created_at}</p>
-        <p>{review.rating}</p>
-        {(review.comment?.length || 0) > 0 && <p>{review.comment}</p>}
-      </div>
-    ))
-  }
-</Layout>
+      {
+        reviews.map((review) => (
+          <div>
+            <p>{review.created_at}</p>
+            <p>{review.rating}</p>
+            {(review.comment?.length || 0) > 0 && <p>{review.comment}</p>}
+          </div>
+        ))
+      }
+    </div>
+    <Footer />
+  </body>
+</html>
