@@ -8,6 +8,8 @@ interface Props {
 
 const { product } = Astro.props
 
+console.log('[DEBUG] ProductReviews.astro', product.id)
+
 const { data, error } = await supabase.from('reviews').select().eq('product_id', product.id)
 
 if (error) {
@@ -17,8 +19,6 @@ if (error) {
 const reviews = data || []
 
 const avgRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
-
-console.log('[DEBUG] ProductReviews.astro')
 ---
 
 <div>

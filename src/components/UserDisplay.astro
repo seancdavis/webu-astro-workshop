@@ -1,9 +1,11 @@
 ---
 import { getCurrentUserProfile, getUserDisplayName } from '@/utils/auth'
 
+console.log('[DEBUG] UserDisplay.astro')
+
 const currentUserProfile = await getCurrentUserProfile()
 
-console.log('[DEBUG] UserDisplay.astro')
+console.log('[DEBUG] UserDisplay.astro', currentUserProfile?.id)
 ---
 
 {!currentUserProfile && <a href="/login">Sign in</a>}

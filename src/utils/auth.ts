@@ -4,7 +4,7 @@ import { supabase } from "@/utils/database";
 export async function getCurrentUser() {
   console.log("[DEBUG] getCurrentUser");
   const { data: { user } } = await supabase.auth.getUser();
-  console.log("[DEBUG]", user);
+  console.log("[DEBUG]", user?.id);
   return user;
 }
 
@@ -17,7 +17,7 @@ export async function getProfileByEmail(email: string) {
       "email",
       email,
     ).single();
-  console.log("[DEBUG]", existingUserProfile);
+  console.log("[DEBUG]", existingUserProfile?.id);
   return existingUserProfile;
 }
 
