@@ -2,14 +2,14 @@ import type { Tables } from "@/types/database.types";
 import { supabase } from "@/utils/database";
 
 export async function getCurrentUser() {
-  console.log("[DEBUG] getCurrentUser");
+  console.log("[DEBUG] getCurrentUser()");
   const { data: { user } } = await supabase.auth.getUser();
-  console.log("[DEBUG]", user?.id);
+  console.log("[DEBUG]", "getCurrentUser", user?.id);
   return user;
 }
 
 export async function getProfileByEmail(email: string) {
-  console.log("[DEBUG] getProfileByEmail");
+  console.log("[DEBUG] getProfileByEmail()");
   const { data: existingUserProfile } = await supabase.from("profiles").select(
     "*",
   )
@@ -17,7 +17,7 @@ export async function getProfileByEmail(email: string) {
       "email",
       email,
     ).single();
-  console.log("[DEBUG]", existingUserProfile?.id);
+  console.log("[DEBUG]", "getProfileByEmail", existingUserProfile?.id);
   return existingUserProfile;
 }
 
