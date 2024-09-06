@@ -1,3 +1,4 @@
+- [ ] Skip the email confirmation for now
 - [ ] Fix the issue with durable cache on /reviews
 - [ ] Fix the issue with caching server islands for auth
 - [ ] Build an extension for the search index
