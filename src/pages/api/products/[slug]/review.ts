@@ -13,9 +13,12 @@ export const POST: APIRoute = async ({ params, redirect, url, request }) => {
     return new Response("Product not found", { status: 404 });
   }
 
+  console.log("[DEBUG] POST review", product);
+
   // Get the user and return 401 if not logged in and with a profile record in
   // the public schema.
   const currentUserProfile = await getCurrentUserProfile();
+  console.log("[DEBUG] POST review", currentUserProfile);
   if (!currentUserProfile) {
     return new Response("Unauthorized", { status: 401 });
   }
