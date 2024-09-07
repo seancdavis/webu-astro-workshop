@@ -4,8 +4,8 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ redirect, url, request }) => {
-  const currentUserProfile = await getCurrentUserProfile();
+export const POST: APIRoute = async ({ redirect, cookies, request }) => {
+  const currentUserProfile = await getCurrentUserProfile({ cookies });
   if (!currentUserProfile) {
     // TODO: Set feedback message
     return redirect("/login");

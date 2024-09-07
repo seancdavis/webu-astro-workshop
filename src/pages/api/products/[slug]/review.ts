@@ -6,7 +6,9 @@ import { getEntry } from "astro:content";
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ params, redirect, url, request }) => {
+export const POST: APIRoute = async (
+  { params, redirect, url, cookies, request },
+) => {
   const product = await getEntry("product", params.slug as string);
 
   if (!product) {
@@ -17,7 +19,7 @@ export const POST: APIRoute = async ({ params, redirect, url, request }) => {
 
   // Get the user and return 401 if not logged in and with a profile record in
   // the public schema.
-  const currentUserProfile = await getCurrentUserProfile();
+  const currentUserProfile = await getCurrentUserProfile({ cookies });
   console.log("[DEBUG] POST review", currentUserProfile);
   if (!currentUserProfile) {
     return new Response("Unauthorized", { status: 401 });

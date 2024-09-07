@@ -12,7 +12,7 @@ const { product } = Astro.props
 
 console.log('[DEBUG] NewProductReview.astro', product.id)
 
-const currentUser = await getCurrentUser()
+const currentUser = await getCurrentUser({ cookies: Astro.cookies })
 
 console.log('[DEBUG] NewProductReview.astro', currentUser?.id)
 

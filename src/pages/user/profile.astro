@@ -1,11 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { getCurrentUserProfile, getUserDisplayName } from '@/utils/auth'
+import { supabase } from '@/utils/database'
 
 export const prerender = false
 
-const currentUserProfile = await getCurrentUserProfile()
+const currentUserProfile = await getCurrentUserProfile({ cookies: Astro.cookies })
 if (!currentUserProfile) return Astro.redirect('/login')
+
+const {
+  data: { session },
+} = await supabase.auth.getSession()
+console.log(Astro.cookies.get('sb-access-token')?.value === session?.access_token)
 ---
 
 <Layout title="Profile">

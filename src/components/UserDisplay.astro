@@ -3,7 +3,7 @@ import { getCurrentUserProfile, getUserDisplayName } from '@/utils/auth'
 
 console.log('[DEBUG] UserDisplay.astro')
 
-const currentUserProfile = await getCurrentUserProfile()
+const currentUserProfile = await getCurrentUserProfile({ cookies: Astro.cookies })
 
 console.log('[DEBUG] UserDisplay.astro', currentUserProfile?.id)
 ---
