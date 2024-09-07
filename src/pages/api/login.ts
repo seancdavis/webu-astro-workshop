@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({ redirect, url, request }) => {
 
   const existingUserProfile = await getProfileByEmail(email);
 
-  const { data, error } = await supabase.auth.signInWithOtp({
+  await supabase.auth.signInWithOtp({
     email,
     options: {
       shouldCreateUser: true,

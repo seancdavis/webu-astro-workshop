@@ -22,7 +22,7 @@ async function run() {
     throw new Error("TEST_USER_EMAIL is not set");
   }
 
-  const { data, error } = await supabase.auth.admin.createUser({
+  const { error } = await supabase.auth.admin.createUser({
     email: testUserEmail,
     email_confirm: true,
     user_metadata: {

@@ -7,7 +7,7 @@ import { getEntry } from "astro:content";
 export const prerender = false;
 
 export const POST: APIRoute = async (
-  { params, redirect, url, cookies, request },
+  { params, redirect, cookies, request },
 ) => {
   const product = await getEntry("product", params.slug as string);
 
