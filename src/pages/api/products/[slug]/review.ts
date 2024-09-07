@@ -1,6 +1,7 @@
 import { getCurrentUserProfile } from "@/utils/auth";
 import { supabase } from "@/utils/database";
 import { productPath } from "@/utils/routes";
+import { purgeCache } from "@netlify/functions";
 import type { APIRoute } from "astro";
 import { getEntry } from "astro:content";
 
@@ -41,6 +42,8 @@ export const POST: APIRoute = async (
     rating: parseInt(rating, 10),
     comment,
   });
+
+  await purgeCache({ tags: ["all-reviews"] });
 
   if (error) {
     console.error("Error saving review:", error);
