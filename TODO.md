@@ -8,7 +8,7 @@
 
 ## Must do
 
-- [ ] Build an extension for the search index
+- [✔︎] Build an extension for the search index
 - [ ] Clean up styles
 - [ ] Add real (and engaging) initial content
 
