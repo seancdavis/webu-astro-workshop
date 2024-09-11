@@ -1,3 +1,8 @@
+[dev]
+[dev.https]
+certFile = ".netlify/dev/cert.pem"
+keyFile = ".netlify/dev/key.pem"
+
 # use the Netlify Image CDN for image transformations
 [[redirects]]
 from = "/images/full/:path"
