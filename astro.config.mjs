@@ -1,10 +1,9 @@
 import netlify from '@astrojs/netlify'
+import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 import { defineConfig } from 'astro/config'
 
-import react from '@astrojs/react'
-
-// https://astro.build/config
 export default defineConfig({
   output: 'hybrid',
   adapter: netlify(),
@@ -12,4 +11,13 @@ export default defineConfig({
   experimental: {
     serverIslands: true,
   },
+  vite:
+    process.env.DEV_SSL === 'true'
+      ? {
+          plugins: [basicSsl()],
+          server: {
+            https: true,
+          },
+        }
+      : {},
 })
